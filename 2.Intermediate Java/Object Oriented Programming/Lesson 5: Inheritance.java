@@ -178,3 +178,190 @@ class Easy{
 // therefore using object of Multiplication we can call function add(), sub() and multiply().
 
 
+// 3. Multilevel inheritance.
+// When first class is inherited by second class, second class is inherited by third class and so on it's
+// called multilevel inheritance.
+// In this type of inheritance each derived class is the base class for the next class.
+// In this type of inheritance atleast three class are compulsory.
+
+// Example
+
+// Base class
+class Addition {
+    public void add(){
+        int x,y=30,z=10;
+        x=y+z;
+        System.out.println("Add = " +x);
+    }
+}
+
+// extending Addition
+class Subtraction extends Addition{
+    void sub(){
+        int x,y=30,z=10;
+        x=y-z;
+        System.out.println("Sub = " +x);
+    }
+}
+
+// extending Subtraction
+class Multiplication extends Subtraction{
+    void multi(){
+        int x, y=30,z=10;
+        x=y*z;
+        System.out.println("Multiplication = " +x);
+    }
+}
+class Easy{
+    public static void main(String[] args){
+        // creating instance(object)
+        Multiplication obj = new Multiplication();
+
+        // calling methods
+        obj.add();
+        obj.sub();
+        obj.multi();
+    }
+}
+
+// ### Output ###
+// Add = 40
+// Sub = 20
+// Multiplication = 300
+
+
+// 4. Hierarchical inheritance.
+// When a single class is inherited by two or more than two classes simultaneously it's called Hierarchical
+// inheritance.
+// In other word we can say that in this type of inheritance derived class may be two or more than two but 
+// Base class should be one.
+// In this type of inheritance atleast three classes are compulsory.
+
+// Example
+
+// Base class
+class Addition {
+    public void add(){
+        int x,y=30,z=10;
+        x=y+z;
+        System.out.println("Add = " +x);
+    }
+}
+
+// extending Addition
+class Subtraction extends Addition{
+    void sub(){
+        int x,y=30,z=10;
+        x=y-z;
+        System.out.println("Sub = " +x);
+    }
+}
+
+// extending same class Addition
+class Multiplication extends Addition{
+    void multi(){
+        int x, y=30,z=10;
+        x=y*z;
+        System.out.println("Multiply = " +x);
+    }
+}
+
+class Easy{
+    public static void main(String[] args){
+        // creating instance(object)
+        Multiplication obj = new Multiplication();
+
+        // calling base class function
+        obj.add();
+        // calling derive class function
+        obj.multi();
+    }
+}
+
+// ### Output ###
+// Add = 40
+// Multiplication = 300
+
+// N/B:
+// In the above example you can see that there are three classes(Addition, Subtraction and Multiplication)
+// are used in which Addition is inherited by Subtraction and Multiplication therefore using object of 
+// Multiplication we can call function only add() and multi() because there is no relation between Subtraction
+// and Multiplication therefore function sub() cannot be called by object of Multiplication.Similarly by using
+// object of class Subtraction we can call only function add() and sub().
+
+
+// 5. Hybrid inheritance.
+// The combination of two or more than two inheritance is called Hybrid inheritance.
+// It can be combination of any two or more than two inheritance(single,multiple,multilevel,Hierarchical).
+// In this type of inheritance atleast three class are compulsory.
+
+// example
+
+// interface
+interface Addition {
+    // declaring method
+    // because we can not define function inside interface
+    void add();
+}
+
+// Base class
+class Subtraction{
+    void sub(){
+        int x,y=30,z=10;
+        x=y-z;
+        System.out.println("Sub = " +x);
+    }
+}
+//Derived class extending base class and implementing interface
+class Multiplication extends Subtraction implements Addition{
+    // implementing method of interface
+    public void add(){
+        int x, y=30,z=10;
+        x=y+z;
+        System.out.println("Add = " +x);
+    }
+    void multiply(){
+        int x, y=30,z=10;
+        x=y*z;
+        System.out.println("Multiply = " +x);
+    }
+}
+
+class Division extends Multiplication{
+    void div(){
+        int x, y=30, z=10;
+        x=y/z;
+        System.out.println("Division = " +x);
+    }
+}
+class Easy{
+    public static void main(String[] args){
+        // creating instance(object)
+        Division obj = new Division();
+
+        // calling methods
+        obj.add();
+        obj.sub();
+        obj.multiply();
+        obj.div();
+    }
+}
+
+// ### Output ###
+// Add = 40
+// Sub = 20
+// Multiply = 300
+// Division = 3
+
+// N/B:
+// In the above example you can see that there are four classes(Addition,Subtraction,Multiplication and Division)
+// in which Addition and Subtraction are inherited by Multiplication class so in class Addition, Subtraction and 
+// Multiplication there is multiple inheritance but class Multiplication is inherited by Division, so in class
+// Multiplication and Division there is single inheritance.Therefore, the above program is a combination of Multiple
+// and Single Inheritance so it's called Hybrid Inheritance.  
+
+// Advantage of Inheritance
+    1. Code Reusability: it means function inside base class is shared by all the derived class.
+    2. Time Saving: because there is no need to define existing property(same code) of a class in another class.
+    3. Less Cost: because existing code is reused, it leads to less development and maintenance costs.
+    4. It helps to reduce code redundancy.
